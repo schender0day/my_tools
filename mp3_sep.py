@@ -23,5 +23,5 @@ def split_mp3(input_file, output_dir, split_time):
         split_audio = audio[start_time:end_time]
         output_file = os.path.join(output_dir, f"{i + 1 +5}.mp3")
         split_audio.export(output_file, format="mp3")
-minuteTotal = int(input("Input number of minutes you want to divide: "))
+minuteTotal = int(input("Input number of minute you want to divide: "))
 split_mp3("/Users/xinchen/Documents/AWS_DevOps/2.mp3", "output", 1000 * 60 * minuteTotal)
