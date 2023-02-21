@@ -1,0 +1,24 @@
+What is the recommended deployment strategy to use when migrating a company's on-premises mission-critical website, written in .NET and Angular, to AWS Elastic Beanstalk, while ensuring no loss of revenue? : Configure the deployment setting of the Elastic Beanstalk environment to use immutable environment updates.
+
+What are the deployment methods available in Elastic Beanstalk? : All at once, Rolling, Rolling with additional batch, Immutable, and Blue/Green.
+
+What is the "All at once" deployment method in Elastic Beanstalk? : Deploying the new version to all instances simultaneously, which puts all instances out of service for a short time while the deployment occurs.
+
+What is the "Rolling" deployment method in Elastic Beanstalk? : Deploying the new version in batches, taking each batch out of service during the deployment phase, reducing the environment's capacity by the number of instances in a batch.
+
+What is the "Rolling with additional batch" deployment method in Elastic Beanstalk? : Deploying the new version in batches, launching a new batch of instances first to ensure full capacity during the deployment process.
+
+What is the "Immutable" deployment method in Elastic Beanstalk? : Deploying the new version to a fresh group of instances by performing an immutable update.
+
+What is the "Blue/Green" deployment method in Elastic Beanstalk? : Deploying the new version to a separate environment, then swapping CNAMEs of the two environments to redirect traffic to the new version instantly.
+
+What is an alternative to rolling updates in Elastic Beanstalk? : Immutable environment updates, which ensure that configuration changes are applied efficiently and safely.
+
+What is the benefit of an immutable environment update over a rolling update in Elastic Beanstalk? : If an immutable environment update fails, the rollback process only requires terminating an Auto Scaling group, whereas a failed rolling update requires an additional rolling update to roll back the changes.
+
+How does Elastic Beanstalk perform an immutable environment update? : Elastic Beanstalk creates a second, temporary Auto Scaling group behind the environment's load balancer to contain the new instances. When the first instance passes health checks, additional instances with the new configuration are launched to match the number of instances running in the original Auto Scaling group. When all new instances pass health checks, Elastic Beanstalk transfers them to the original Auto Scaling group, terminates the temporary Auto Scaling group, and old instances.
+
+What are security headers in the HTTP response from a server?: Security headers tell your browser how to behave when handling a website's content. Examples of security headers include Strict Transport Security, Content-Security-Policy, X-Content-Type-Options, X-Frame-Options, X-XSS-Protection, and Referrer-Policy.
+What is X-XSS-Protection?: X-XSS-Protection is a security header that stops pages from loading when cross-site scripting (XSS) attacks are detected by Internet Explorer and Chrome.
+What are some examples of HTTP headers?: Some examples of HTTP headers include cache-control, which determines how long to cache content, and content-type, which indicates the media type of a resource.
+What is the solution to add security headers to an Amazon S3 bucket and CloudFront?: The solution involves creating a single-page website hosted in an Amazon S3 bucket, using Amazon CloudFront, creating a new Lambda@Edge function, and configuring the origin response trigger to execute the Lambda@Edge function and add the security headers to the HTTP response.
