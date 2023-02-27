@@ -23,7 +23,7 @@ model = genanki.Model(
 
 # create or load the deck
 deck_id = 2059400110
-deck_name = 'Test Deck'
+deck_name = 'CommandLineFun'
 try:
     # try to load an existing deck
     deck = genanki.Package('/Users/xinchen/Documents/test2.apkg').col.decks.get(deck_id)
